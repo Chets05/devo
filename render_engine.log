@@ -1,0 +1,926 @@
+2025-04-12 01:11:19,374 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:11:19,375 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:11:19,936 - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a seasoned content writer for a YouTube Shorts channel, specializing in facts videos. \n        Your facts shorts are concise, each lasting less than 50 seconds (approximately 140 words). \n        They are incredibly engaging and original. When a user requests a specific type of facts short, you will create it.\n\n        For instance, if the user asks for:\n        Weird facts\n        You would produce content like this:\n\n        Weird facts you don\'t know:\n        - Bananas are berries, but strawberries aren\'t.\n        - A single cloud can weigh over a million pounds.\n        - There\'s a species of jellyfish that is biologically immortal.\n        - Honey never spoils; archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still edible.\n        - The shortest war in history was between Britain and Zanzibar on August 27, 1896. Zanzibar surrendered after 38 minutes.\n        - Octopuses have three hearts and blue blood.\n\n        You are now tasked with creating the best short script based on the user\'s requested type of \'facts\'.\n\n        Keep it brief, highly interesting, and unique.\n\n        Stictly output the script in a JSON format like below, and only provide a parsable JSON object with the key \'script\'.\n\n        # Output\n        {"script": "Here is the script ..."}\n        '}, {'role': 'user', 'content': 'interesting facts about space'}], 'model': 'mixtral-8x7b-32768'}}
+2025-04-12 01:11:19,952 - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2025-04-12 01:11:19,953 - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-04-12 01:11:19,988 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000183A9D193D0>
+2025-04-12 01:11:19,988 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x00000183A9DAE9F0> server_hostname='api.groq.com' timeout=5.0
+2025-04-12 01:11:20,008 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000183A927ED10>
+2025-04-12 01:11:20,008 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-04-12 01:11:20,009 - DEBUG - send_request_headers.complete
+2025-04-12 01:11:20,009 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-04-12 01:11:20,009 - DEBUG - send_request_body.complete
+2025-04-12 01:11:20,009 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-04-12 01:11:20,137 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 400, b'Bad Request', [(b'Date', b'Fri, 11 Apr 2025 19:40:32 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'279'), (b'Connection', b'keep-alive'), (b'CF-Ray', b'92ecf4ceafb754fe-DEL'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Vary', b'Origin, Accept-Encoding'), (b'X-Groq-Region', b'gcp-asia-south1'), (b'X-Request-Id', b'req_01jrk5wfbzfg4b74q46q6w2h4k'), (b'Set-Cookie', b'__cf_bm=VZvRY_B50RLwImDcP0nG7U.5.1rg8Kq3GYExoOKKwvM-1744400432-1.0.1.1-ztj0yCzlbiKCxfOtMV4B024eJZgSbmnxjoMfcBzfOXZNyETms5ZFZrN0Dp_cvuwr2fosWIF09L_3xbNGm24D5LQn3dFaYTsCsrIE65WgSf4; path=/; expires=Fri, 11-Apr-25 20:10:32 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-04-12 01:11:20,138 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-04-12 01:11:20,138 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-04-12 01:11:20,138 - DEBUG - receive_response_body.complete
+2025-04-12 01:11:20,138 - DEBUG - response_closed.started
+2025-04-12 01:11:20,138 - DEBUG - response_closed.complete
+2025-04-12 01:11:20,138 - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "400 Bad Request" Headers({'date': 'Fri, 11 Apr 2025 19:40:32 GMT', 'content-type': 'application/json', 'content-length': '279', 'connection': 'keep-alive', 'cf-ray': '92ecf4ceafb754fe-DEL', 'cf-cache-status': 'DYNAMIC', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'vary': 'Origin, Accept-Encoding', 'x-groq-region': 'gcp-asia-south1', 'x-request-id': 'req_01jrk5wfbzfg4b74q46q6w2h4k', 'set-cookie': '__cf_bm=VZvRY_B50RLwImDcP0nG7U.5.1rg8Kq3GYExoOKKwvM-1744400432-1.0.1.1-ztj0yCzlbiKCxfOtMV4B024eJZgSbmnxjoMfcBzfOXZNyETms5ZFZrN0Dp_cvuwr2fosWIF09L_3xbNGm24D5LQn3dFaYTsCsrIE65WgSf4; path=/; expires=Fri, 11-Apr-25 20:10:32 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None', 'server': 'cloudflare', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-04-12 01:11:20,138 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\groq\_base_client.py", line 1018, in _request
+    response.raise_for_status()
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\httpx\_models.py", line 761, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://api.groq.com/openai/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+2025-04-12 01:11:20,181 - DEBUG - Not retrying
+2025-04-12 01:11:20,181 - DEBUG - Re-raising status error
+2025-04-12 01:11:50,422 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:11:50,422 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:11:50,866 - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a seasoned content writer for a YouTube Shorts channel, specializing in facts videos. \n        Your facts shorts are concise, each lasting less than 50 seconds (approximately 140 words). \n        They are incredibly engaging and original. When a user requests a specific type of facts short, you will create it.\n\n        For instance, if the user asks for:\n        Weird facts\n        You would produce content like this:\n\n        Weird facts you don\'t know:\n        - Bananas are berries, but strawberries aren\'t.\n        - A single cloud can weigh over a million pounds.\n        - There\'s a species of jellyfish that is biologically immortal.\n        - Honey never spoils; archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still edible.\n        - The shortest war in history was between Britain and Zanzibar on August 27, 1896. Zanzibar surrendered after 38 minutes.\n        - Octopuses have three hearts and blue blood.\n\n        You are now tasked with creating the best short script based on the user\'s requested type of \'facts\'.\n\n        Keep it brief, highly interesting, and unique.\n\n        Stictly output the script in a JSON format like below, and only provide a parsable JSON object with the key \'script\'.\n\n        # Output\n        {"script": "Here is the script ..."}\n        '}, {'role': 'user', 'content': 'interesting facts about space'}], 'model': 'llama2-70b-4096'}}
+2025-04-12 01:11:50,882 - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2025-04-12 01:11:50,882 - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-04-12 01:11:50,895 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002CDFBD3AE90>
+2025-04-12 01:11:50,896 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000002CDFA9729F0> server_hostname='api.groq.com' timeout=5.0
+2025-04-12 01:11:50,912 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002CDF9EAC950>
+2025-04-12 01:11:50,912 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-04-12 01:11:50,912 - DEBUG - send_request_headers.complete
+2025-04-12 01:11:50,912 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-04-12 01:11:50,913 - DEBUG - send_request_body.complete
+2025-04-12 01:11:50,913 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-04-12 01:11:51,004 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 404, b'Not Found', [(b'Date', b'Fri, 11 Apr 2025 19:41:03 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'CF-Ray', b'92ecf58fc90b91e0-DEL'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Vary', b'Origin, Accept-Encoding'), (b'X-Groq-Region', b'gcp-asia-south1'), (b'X-Request-Id', b'req_01jrk5xdgnfnjrezy163xwp1qk'), (b'Set-Cookie', b'__cf_bm=2JyrZaONdplu8fwRMix4GQ0frsQlf2UCHPBQ3r246eU-1744400463-1.0.1.1-QfX0VcJLjx_PqJ6Oj_dGSEPzJh3H0OAA2fG2MfS.S3wZRDdJVXk5f.A46E3GUzwjUkvF3_V_kd_XL1YrpnTW7wqP2YtcUGKaVn1aRT4_Tqc; path=/; expires=Fri, 11-Apr-25 20:11:03 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-04-12 01:11:51,005 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-04-12 01:11:51,005 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-04-12 01:11:51,005 - DEBUG - receive_response_body.complete
+2025-04-12 01:11:51,005 - DEBUG - response_closed.started
+2025-04-12 01:11:51,005 - DEBUG - response_closed.complete
+2025-04-12 01:11:51,005 - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "404 Not Found" Headers({'date': 'Fri, 11 Apr 2025 19:41:03 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cf-ray': '92ecf58fc90b91e0-DEL', 'cf-cache-status': 'DYNAMIC', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'vary': 'Origin, Accept-Encoding', 'x-groq-region': 'gcp-asia-south1', 'x-request-id': 'req_01jrk5xdgnfnjrezy163xwp1qk', 'set-cookie': '__cf_bm=2JyrZaONdplu8fwRMix4GQ0frsQlf2UCHPBQ3r246eU-1744400463-1.0.1.1-QfX0VcJLjx_PqJ6Oj_dGSEPzJh3H0OAA2fG2MfS.S3wZRDdJVXk5f.A46E3GUzwjUkvF3_V_kd_XL1YrpnTW7wqP2YtcUGKaVn1aRT4_Tqc; path=/; expires=Fri, 11-Apr-25 20:11:03 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None', 'server': 'cloudflare', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-04-12 01:11:51,005 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\groq\_base_client.py", line 1018, in _request
+    response.raise_for_status()
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\httpx\_models.py", line 761, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'https://api.groq.com/openai/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2025-04-12 01:11:51,007 - DEBUG - Not retrying
+2025-04-12 01:11:51,007 - DEBUG - Re-raising status error
+2025-04-12 01:12:37,741 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:12:37,741 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:12:38,262 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a seasoned content writer for a YouTube Shorts channel, specializing in facts videos. \n        Your facts shorts are concise, each lasting less than 50 seconds (approximately 140 words). \n        They are incredibly engaging and original. When a user requests a specific type of facts short, you will create it.\n\n        For instance, if the user asks for:\n        Weird facts\n        You would produce content like this:\n\n        Weird facts you don\'t know:\n        - Bananas are berries, but strawberries aren\'t.\n        - A single cloud can weigh over a million pounds.\n        - There\'s a species of jellyfish that is biologically immortal.\n        - Honey never spoils; archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still edible.\n        - The shortest war in history was between Britain and Zanzibar on August 27, 1896. Zanzibar surrendered after 38 minutes.\n        - Octopuses have three hearts and blue blood.\n\n        You are now tasked with creating the best short script based on the user\'s requested type of \'facts\'.\n\n        Keep it brief, highly interesting, and unique.\n\n        Stictly output the script in a JSON format like below, and only provide a parsable JSON object with the key \'script\'.\n\n        # Output\n        {"script": "Here is the script ..."}\n        '}, {'role': 'user', 'content': 'interesting facts about space'}], 'model': 'gpt-4'}}
+2025-04-12 01:12:38,291 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-04-12 01:12:38,291 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-04-12 01:12:38,354 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002C7F0FDCA50>
+2025-04-12 01:12:38,354 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000002C7FFCD9E20> server_hostname='api.openai.com' timeout=5.0
+2025-04-12 01:12:38,408 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002C78B1DC550>
+2025-04-12 01:12:38,408 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-04-12 01:12:38,409 - DEBUG - send_request_headers.complete
+2025-04-12 01:12:38,409 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-04-12 01:12:38,409 - DEBUG - send_request_body.complete
+2025-04-12 01:12:38,409 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-04-12 01:12:39,223 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 404, b'Not Found', [(b'Date', b'Fri, 11 Apr 2025 19:41:51 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_3faa4700e1445c8bf20a7be6753ecdf6'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=uU6VzIKbOyLTSUxWeVor6dmIodyETazSor_ZcRfSHo4-1744400511-1.0.1.1-7eZhUPxnbMYVtnOyyjPssDJbuiaSH47jvOt1NCuva2WPbUZpTG3dVqmdx1A9RBdOxJUlaFQC.BADPX5vtPvjMq5X4xCcQBjVIwMTZOtEAq4; path=/; expires=Fri, 11-Apr-25 20:11:51 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=NUlal0zdiQB0kkBCu6CNjegt4A2a89VgO6VUEeiP5rI-1744400511592-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'92ecf6b8a98c7e97-MAA'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-04-12 01:12:39,224 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-04-12 01:12:39,224 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-04-12 01:12:39,224 - DEBUG - receive_response_body.complete
+2025-04-12 01:12:39,224 - DEBUG - response_closed.started
+2025-04-12 01:12:39,224 - DEBUG - response_closed.complete
+2025-04-12 01:12:39,224 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "404 Not Found" Headers([('date', 'Fri, 11 Apr 2025 19:41:51 GMT'), ('content-type', 'application/json; charset=utf-8'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('vary', 'Origin'), ('x-request-id', 'req_3faa4700e1445c8bf20a7be6753ecdf6'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=uU6VzIKbOyLTSUxWeVor6dmIodyETazSor_ZcRfSHo4-1744400511-1.0.1.1-7eZhUPxnbMYVtnOyyjPssDJbuiaSH47jvOt1NCuva2WPbUZpTG3dVqmdx1A9RBdOxJUlaFQC.BADPX5vtPvjMq5X4xCcQBjVIwMTZOtEAq4; path=/; expires=Fri, 11-Apr-25 20:11:51 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=NUlal0zdiQB0kkBCu6CNjegt4A2a89VgO6VUEeiP5rI-1744400511592-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '92ecf6b8a98c7e97-MAA'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-04-12 01:12:39,224 - DEBUG - request_id: req_3faa4700e1445c8bf20a7be6753ecdf6
+2025-04-12 01:12:39,224 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\openai\_base_client.py", line 999, in _request
+    response.raise_for_status()
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\httpx\_models.py", line 761, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2025-04-12 01:12:39,251 - DEBUG - Not retrying
+2025-04-12 01:12:39,251 - DEBUG - Re-raising status error
+2025-04-12 01:13:05,296 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:13:05,297 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:13:05,714 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a seasoned content writer for a YouTube Shorts channel, specializing in facts videos. \n        Your facts shorts are concise, each lasting less than 50 seconds (approximately 140 words). \n        They are incredibly engaging and original. When a user requests a specific type of facts short, you will create it.\n\n        For instance, if the user asks for:\n        Weird facts\n        You would produce content like this:\n\n        Weird facts you don\'t know:\n        - Bananas are berries, but strawberries aren\'t.\n        - A single cloud can weigh over a million pounds.\n        - There\'s a species of jellyfish that is biologically immortal.\n        - Honey never spoils; archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still edible.\n        - The shortest war in history was between Britain and Zanzibar on August 27, 1896. Zanzibar surrendered after 38 minutes.\n        - Octopuses have three hearts and blue blood.\n\n        You are now tasked with creating the best short script based on the user\'s requested type of \'facts\'.\n\n        Keep it brief, highly interesting, and unique.\n\n        Stictly output the script in a JSON format like below, and only provide a parsable JSON object with the key \'script\'.\n\n        # Output\n        {"script": "Here is the script ..."}\n        '}, {'role': 'user', 'content': 'interesting facts about space'}], 'model': 'gpt-3.5-turbo'}}
+2025-04-12 01:13:05,739 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-04-12 01:13:05,740 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-04-12 01:13:05,815 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000025AE911EB90>
+2025-04-12 01:13:05,815 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000025AE7D19E20> server_hostname='api.openai.com' timeout=5.0
+2025-04-12 01:13:05,868 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000025AE910E950>
+2025-04-12 01:13:05,868 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-04-12 01:13:05,869 - DEBUG - send_request_headers.complete
+2025-04-12 01:13:05,869 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-04-12 01:13:05,869 - DEBUG - send_request_body.complete
+2025-04-12 01:13:05,869 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-04-12 01:13:06,213 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 429, b'Too Many Requests', [(b'Date', b'Fri, 11 Apr 2025 19:42:18 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'337'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_b870aa06fc8935de2f4d2bcec6dd7fbc'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=V1io0CFr7oW6gpeDB1QfOgieRNf29iakFLl9YkdlybM-1744400538-1.0.1.1-3GqwfZARf3SNIuaS0VNGN3GjmZb1mzaXJU5EuoIy_3tBpCZpAsnzW49a.QYKZgnnveLR1t7U0CK5Vh94rrhY1Bveq8olBf6G5n3LDPbLkbc; path=/; expires=Fri, 11-Apr-25 20:12:18 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=cmPRGNTUr9izH9M7PZsdpy8V35U27PRRbml43dTjVuk-1744400538582-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'92ecf7644fb17f50-MAA'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-04-12 01:13:06,214 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-12 01:13:06,214 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-04-12 01:13:06,214 - DEBUG - receive_response_body.complete
+2025-04-12 01:13:06,214 - DEBUG - response_closed.started
+2025-04-12 01:13:06,214 - DEBUG - response_closed.complete
+2025-04-12 01:13:06,214 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "429 Too Many Requests" Headers([('date', 'Fri, 11 Apr 2025 19:42:18 GMT'), ('content-type', 'application/json; charset=utf-8'), ('content-length', '337'), ('connection', 'keep-alive'), ('vary', 'Origin'), ('x-request-id', 'req_b870aa06fc8935de2f4d2bcec6dd7fbc'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=V1io0CFr7oW6gpeDB1QfOgieRNf29iakFLl9YkdlybM-1744400538-1.0.1.1-3GqwfZARf3SNIuaS0VNGN3GjmZb1mzaXJU5EuoIy_3tBpCZpAsnzW49a.QYKZgnnveLR1t7U0CK5Vh94rrhY1Bveq8olBf6G5n3LDPbLkbc; path=/; expires=Fri, 11-Apr-25 20:12:18 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=cmPRGNTUr9izH9M7PZsdpy8V35U27PRRbml43dTjVuk-1744400538582-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '92ecf7644fb17f50-MAA'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-04-12 01:13:06,214 - DEBUG - request_id: req_b870aa06fc8935de2f4d2bcec6dd7fbc
+2025-04-12 01:13:06,214 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\openai\_base_client.py", line 999, in _request
+    response.raise_for_status()
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\httpx\_models.py", line 761, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+2025-04-12 01:13:06,216 - DEBUG - Retrying due to status code 429
+2025-04-12 01:13:06,216 - DEBUG - 1 retry left
+2025-04-12 01:13:06,216 - INFO - Retrying request to /chat/completions in 0.837672 seconds
+2025-04-12 01:13:07,055 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a seasoned content writer for a YouTube Shorts channel, specializing in facts videos. \n        Your facts shorts are concise, each lasting less than 50 seconds (approximately 140 words). \n        They are incredibly engaging and original. When a user requests a specific type of facts short, you will create it.\n\n        For instance, if the user asks for:\n        Weird facts\n        You would produce content like this:\n\n        Weird facts you don\'t know:\n        - Bananas are berries, but strawberries aren\'t.\n        - A single cloud can weigh over a million pounds.\n        - There\'s a species of jellyfish that is biologically immortal.\n        - Honey never spoils; archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still edible.\n        - The shortest war in history was between Britain and Zanzibar on August 27, 1896. Zanzibar surrendered after 38 minutes.\n        - Octopuses have three hearts and blue blood.\n\n        You are now tasked with creating the best short script based on the user\'s requested type of \'facts\'.\n\n        Keep it brief, highly interesting, and unique.\n\n        Stictly output the script in a JSON format like below, and only provide a parsable JSON object with the key \'script\'.\n\n        # Output\n        {"script": "Here is the script ..."}\n        '}, {'role': 'user', 'content': 'interesting facts about space'}], 'model': 'gpt-3.5-turbo'}}
+2025-04-12 01:13:07,055 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-04-12 01:13:07,055 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-04-12 01:13:07,055 - DEBUG - send_request_headers.complete
+2025-04-12 01:13:07,055 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-04-12 01:13:07,056 - DEBUG - send_request_body.complete
+2025-04-12 01:13:07,056 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-04-12 01:13:07,396 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 429, b'Too Many Requests', [(b'Date', b'Fri, 11 Apr 2025 19:42:19 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'337'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_705dd329c12d5d33248bd7efeb31a578'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'92ecf76bbb2d7f50-MAA'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-04-12 01:13:07,397 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-12 01:13:07,397 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-04-12 01:13:07,397 - DEBUG - receive_response_body.complete
+2025-04-12 01:13:07,397 - DEBUG - response_closed.started
+2025-04-12 01:13:07,397 - DEBUG - response_closed.complete
+2025-04-12 01:13:07,397 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "429 Too Many Requests" Headers({'date': 'Fri, 11 Apr 2025 19:42:19 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '337', 'connection': 'keep-alive', 'vary': 'Origin', 'x-request-id': 'req_705dd329c12d5d33248bd7efeb31a578', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '92ecf76bbb2d7f50-MAA', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-04-12 01:13:07,397 - DEBUG - request_id: req_705dd329c12d5d33248bd7efeb31a578
+2025-04-12 01:13:07,397 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\openai\_base_client.py", line 999, in _request
+    response.raise_for_status()
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\httpx\_models.py", line 761, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\openai\_base_client.py", line 999, in _request
+    response.raise_for_status()
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\httpx\_models.py", line 761, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+2025-04-12 01:13:07,398 - DEBUG - Retrying due to status code 429
+2025-04-12 01:13:07,398 - DEBUG - 0 retries left
+2025-04-12 01:13:07,398 - INFO - Retrying request to /chat/completions in 1.612084 seconds
+2025-04-12 01:13:09,011 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a seasoned content writer for a YouTube Shorts channel, specializing in facts videos. \n        Your facts shorts are concise, each lasting less than 50 seconds (approximately 140 words). \n        They are incredibly engaging and original. When a user requests a specific type of facts short, you will create it.\n\n        For instance, if the user asks for:\n        Weird facts\n        You would produce content like this:\n\n        Weird facts you don\'t know:\n        - Bananas are berries, but strawberries aren\'t.\n        - A single cloud can weigh over a million pounds.\n        - There\'s a species of jellyfish that is biologically immortal.\n        - Honey never spoils; archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still edible.\n        - The shortest war in history was between Britain and Zanzibar on August 27, 1896. Zanzibar surrendered after 38 minutes.\n        - Octopuses have three hearts and blue blood.\n\n        You are now tasked with creating the best short script based on the user\'s requested type of \'facts\'.\n\n        Keep it brief, highly interesting, and unique.\n\n        Stictly output the script in a JSON format like below, and only provide a parsable JSON object with the key \'script\'.\n\n        # Output\n        {"script": "Here is the script ..."}\n        '}, {'role': 'user', 'content': 'interesting facts about space'}], 'model': 'gpt-3.5-turbo'}}
+2025-04-12 01:13:09,011 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-04-12 01:13:09,011 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-04-12 01:13:09,012 - DEBUG - send_request_headers.complete
+2025-04-12 01:13:09,012 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-04-12 01:13:09,012 - DEBUG - send_request_body.complete
+2025-04-12 01:13:09,012 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-04-12 01:13:09,352 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 429, b'Too Many Requests', [(b'Date', b'Fri, 11 Apr 2025 19:42:21 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'337'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_06c08f5ba1d7a471a4eddd9a35c99705'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'92ecf777f8d17f50-MAA'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-04-12 01:13:09,352 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-04-12 01:13:09,352 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-04-12 01:13:09,352 - DEBUG - receive_response_body.complete
+2025-04-12 01:13:09,352 - DEBUG - response_closed.started
+2025-04-12 01:13:09,352 - DEBUG - response_closed.complete
+2025-04-12 01:13:09,352 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "429 Too Many Requests" Headers({'date': 'Fri, 11 Apr 2025 19:42:21 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '337', 'connection': 'keep-alive', 'vary': 'Origin', 'x-request-id': 'req_06c08f5ba1d7a471a4eddd9a35c99705', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '92ecf777f8d17f50-MAA', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-04-12 01:13:09,352 - DEBUG - request_id: req_06c08f5ba1d7a471a4eddd9a35c99705
+2025-04-12 01:13:09,352 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\openai\_base_client.py", line 999, in _request
+    response.raise_for_status()
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\httpx\_models.py", line 761, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\openai\_base_client.py", line 999, in _request
+    response.raise_for_status()
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\httpx\_models.py", line 761, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\openai\_base_client.py", line 999, in _request
+    response.raise_for_status()
+  File "C:\Users\CHESHTA\devolympus\venv\Lib\site-packages\httpx\_models.py", line 761, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+2025-04-12 01:13:09,353 - DEBUG - Re-raising status error
+2025-04-12 01:19:57,991 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:19:57,991 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:20:20,363 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:20:20,364 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:21:11,362 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:21:11,363 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:21:44,356 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:21:44,357 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:21:44,673 - DEBUG - Using proactor: IocpProactor
+2025-04-12 01:22:15,116 - DEBUG - Add segment 1 at step 15:
+	<|transcribe|><|0.00|> Fascinating space facts that will blow your mind.<|3.28|>
+2025-04-12 01:22:16,141 - DEBUG - Add segment 2 at step 38:
+	<|3.28|><|3.28|> The sun is so massive that it makes up 99.86% of our solar system's total mass.<|9.52|>
+2025-04-12 01:22:16,678 - DEBUG - Add segment 3 at step 50:
+	<|9.52|><|9.52|> A day on Venus is longer than its year.<|12.32|>
+2025-04-12 01:22:17,260 - DEBUG - Add segment 4 at step 63:
+	<|12.32|><|12.32|> It takes 243 Earth days to retake once.<|16.24|>
+2025-04-12 01:22:18,035 - DEBUG - Add segment 5 at step 80:
+	<|16.24|><|16.24|> There's a giant hexagon-shaped storm on Saturn's North Pole.<|20.08|>
+2025-04-12 01:22:18,911 - DEBUG - Add segment 6 at step 100:
+	<|20.08|><|20.08|> The footprints left by Apollo astronauts on the Moon will last for at least 100 million years.<|25.84|>
+2025-04-12 01:22:19,618 - DEBUG - Add segment 7 at step 116:
+	<|25.84|><|25.84|> If you could put Saturn in a giant bathtub, it would float.<|29.60|>
+2025-04-12 01:22:20,472 - DEBUG - Reset last segment: <|29.60|><|29.60|>
+2025-04-12 01:22:21,121 - DEBUG - Add segment 8 at step 127:
+	<|transcribe|><|0.00|> Its density is less than water.<|2.56|>
+2025-04-12 01:22:21,518 - DEBUG - Add segment 9 at step 136:
+	<|2.56|><|2.56|> Stars don't actually twinkle.<|4.16|>
+2025-04-12 01:22:22,104 - DEBUG - Add segment 10 at step 148:
+	<|4.16|><|4.16|> It's just Earth's atmosphere distorting their light.<|6.64|>
+2025-04-12 01:22:22,116 - DEBUG - Compile results
+2025-04-12 01:22:22,132 - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': '# Instructions\n\nGiven the following video script and timed captions, extract three visually concrete and specific keywords for each time segment that can be used to search for background videos. The keywords should be short and capture the main essence of the sentence. They can be synonyms or related terms. If a caption is vague or general, consider the next timed caption for more context. If a keyword is a single word, try to return a two-word keyword that is visually concrete. If a time frame contains two or more important pieces of information, divide it into shorter time frames with one keyword each. Ensure that the time periods are strictly consecutive and cover the entire length of the video. Each keyword should cover between 2-4 seconds. The output should be in JSON format, like this: [[[t1, t2], ["keyword1", "keyword2", "keyword3"]], [[t2, t3], ["keyword4", "keyword5", "keyword6"]], ...]. Please handle all edge cases, such as overlapping time segments, vague or general captions, and single-word keywords.\n\nFor example, if the caption is \'The cheetah is the fastest land animal, capable of running at speeds up to 75 mph\', the keywords should include \'cheetah running\', \'fastest animal\', and \'75 mph\'. Similarly, for \'The Great Wall of China is one of the most iconic landmarks in the world\', the keywords should be \'Great Wall of China\', \'iconic landmark\', and \'China landmark\'.\n\nImportant Guidelines:\n\nUse only English in your text queries.\nEach search string must depict something visual.\nThe depictions have to be extremely visually concrete, like rainy street, or cat sleeping.\n\'emotional moment\' <= BAD, because it doesn\'t depict something visually.\n\'crying child\' <= GOOD, because it depicts something visual.\nThe list must always contain the most relevant and appropriate query searches.\n[\'Car\', \'Car driving\', \'Car racing\', \'Car parked\'] <= BAD, because it\'s 4 strings.\n[\'Fast car\'] <= GOOD, because it\'s 1 string.\n[\'Un chien\', \'une voiture rapide\', \'une maison rouge\'] <= BAD, because the text query is NOT in English.\n\nNote: Your response should be the response only and no extra text or data.\n  '}, {'role': 'user', 'content': 'Script: Fascinating Space Facts That Will Blow Your Mind:\n- The Sun is so massive that it makes up 99.86% of our solar system\'s total mass.\n- A day on Venus is longer than its year! It takes 243 Earth days to rotate once.\n- There\'s a giant hexagon-shaped storm on Saturn\'s north pole.\n- The footprints left by Apollo astronauts on the Moon will last for at least 100 million years.\n- If you could put Saturn in a giant bathtub, it would float! Its density is less than water.\n- Stars don\'t actually twinkle - it\'s just Earth\'s atmosphere distorting their light.\nTimed Captions:((0, 0.7), \'Fascinating\')((0.7, 1.36), \'space facts\')((1.36, 1.7), \'that will\')((1.7, 2.12), \'blow your\')((2.12, 3.58), \'mind The\')((3.58, 4.18), \'sun is so\')((4.18, 4.72), \'massive that\')((4.72, 5.0), \'it makes\')((5.0, 6.48), \'up 9986 of\')((6.48, 7.52), \'our solar\')((7.52, 8.3), "system\'s total")((8.3, 9.76), \'mass A day\')((9.76, 10.36), \'on Venus\')((10.36, 10.9), \'is longer\')((10.9, 11.1), \'than its\')((11.1, 12.84), \'year It takes\')((12.84, 14.24), \'243 Earth\')((14.24, 15.04), \'days to retake\')((15.04, 16.64), "once There\'s")((16.64, 16.72), \'a giant\')((16.72, 17.68), \'hexagon-shaped\')((17.68, 18.06), \'storm on\')((18.06, 18.72), "Saturn\'s North")((18.72, 19.26), \'Pole The\')((19.26, 20.66), \'footprints left\')((20.66, 21.26), \'by Apollo\')((21.26, 22.16), \'astronauts on\')((22.16, 22.52), \'the Moon\')((22.52, 22.96), \'will last\')((22.96, 23.54), \'for at least\')((23.54, 24.62), \'100 million\')((24.62, 25.0), \'years If\')((25.0, 26.28), \'you could\')((26.28, 26.6), \'put Saturn\')((26.6, 27.1), \'in a giant\')((27.1, 27.92), \'bathtub it\')((27.92, 28.4), \'would float\')((28.4, 29.86), \'Its density\')((29.86, 30.54), \'is less than\')((30.54, 31.26), \'water Stars\')((31.26, 32.88), "don\'t actually")((32.88, 33.68), "twinkle It\'s")((33.68, 34.22), "just Earth\'s")((34.22, 34.62), \'atmosphere\')((34.62, 35.08), \'distorting\')((35.08, 35.64), \'their light\')\n'}], 'model': 'llama3-70b-8192', 'temperature': 1}}
+2025-04-12 01:22:22,157 - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2025-04-12 01:22:22,157 - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-04-12 01:22:22,177 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000230AB6E9ED0>
+2025-04-12 01:22:22,178 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x00000230ACC524E0> server_hostname='api.groq.com' timeout=5.0
+2025-04-12 01:22:22,194 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000230AAE022D0>
+2025-04-12 01:22:22,195 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-04-12 01:22:22,195 - DEBUG - send_request_headers.complete
+2025-04-12 01:22:22,196 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-04-12 01:22:22,196 - DEBUG - send_request_body.complete
+2025-04-12 01:22:22,196 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-04-12 01:22:23,712 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Apr 2025 19:51:36 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'CF-Ray', b'92ed04f94cca91be-DEL'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Vary', b'Origin, Accept-Encoding'), (b'X-Groq-Region', b'gcp-asia-south1'), (b'X-Ratelimit-Limit-Requests', b'14400'), (b'X-Ratelimit-Limit-Tokens', b'6000'), (b'X-Ratelimit-Remaining-Requests', b'14399'), (b'X-Ratelimit-Remaining-Tokens', b'4975'), (b'X-Ratelimit-Reset-Requests', b'6s'), (b'X-Ratelimit-Reset-Tokens', b'10.25s'), (b'X-Request-Id', b'req_01jrk6gp0vezkban6n8y6jsqne'), (b'Set-Cookie', b'__cf_bm=UeLW0EP97_MCJyBSgkWc4eVl0uCBiuFEfNqMclAAEvs-1744401096-1.0.1.1-OJ_Iw_EBgrIKfo22t7ljb1vOF_sct4nWTI1R_qYPL0vAwCFpWD.ntkHgY2z1YLvP2A7feq7v7C3LMQgvnrQ5r4HmDQaE4BlEerNltNWrrJI; path=/; expires=Fri, 11-Apr-25 20:21:36 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-04-12 01:22:23,713 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-12 01:22:23,713 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-04-12 01:22:23,713 - DEBUG - receive_response_body.complete
+2025-04-12 01:22:23,713 - DEBUG - response_closed.started
+2025-04-12 01:22:23,713 - DEBUG - response_closed.complete
+2025-04-12 01:22:23,714 - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Apr 2025 19:51:36 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cf-ray': '92ed04f94cca91be-DEL', 'cf-cache-status': 'DYNAMIC', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'vary': 'Origin, Accept-Encoding', 'x-groq-region': 'gcp-asia-south1', 'x-ratelimit-limit-requests': '14400', 'x-ratelimit-limit-tokens': '6000', 'x-ratelimit-remaining-requests': '14399', 'x-ratelimit-remaining-tokens': '4975', 'x-ratelimit-reset-requests': '6s', 'x-ratelimit-reset-tokens': '10.25s', 'x-request-id': 'req_01jrk6gp0vezkban6n8y6jsqne', 'set-cookie': '__cf_bm=UeLW0EP97_MCJyBSgkWc4eVl0uCBiuFEfNqMclAAEvs-1744401096-1.0.1.1-OJ_Iw_EBgrIKfo22t7ljb1vOF_sct4nWTI1R_qYPL0vAwCFpWD.ntkHgY2z1YLvP2A7feq7v7C3LMQgvnrQ5r4HmDQaE4BlEerNltNWrrJI; path=/; expires=Fri, 11-Apr-25 20:21:36 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None', 'server': 'cloudflare', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-04-12 01:22:54,693 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:22:54,694 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:22:55,020 - DEBUG - Using proactor: IocpProactor
+2025-04-12 01:23:00,402 - DEBUG - Add segment 1 at step 15:
+	<|transcribe|><|0.00|> Fascinating space facts that will blow your mind.<|3.28|>
+2025-04-12 01:23:01,411 - DEBUG - Add segment 2 at step 38:
+	<|3.28|><|3.28|> The sun is so massive that it makes up 99.86% of our solar system's total mass.<|9.52|>
+2025-04-12 01:23:02,037 - DEBUG - Add segment 3 at step 50:
+	<|9.52|><|9.52|> A day on Venus is longer than its year.<|12.32|>
+2025-04-12 01:23:02,622 - DEBUG - Add segment 4 at step 63:
+	<|12.32|><|12.32|> It takes 243 Earth days to retake once.<|16.24|>
+2025-04-12 01:23:03,383 - DEBUG - Add segment 5 at step 80:
+	<|16.24|><|16.24|> There's a giant hexagon-shaped storm on Saturn's North Pole.<|20.08|>
+2025-04-12 01:23:04,268 - DEBUG - Add segment 6 at step 100:
+	<|20.08|><|20.08|> The footprints left by Apollo astronauts on the Moon will last for at least 100 million years.<|25.84|>
+2025-04-12 01:23:04,990 - DEBUG - Add segment 7 at step 116:
+	<|25.84|><|25.84|> If you could put Saturn in a giant bathtub, it would float.<|29.60|>
+2025-04-12 01:23:05,840 - DEBUG - Reset last segment: <|29.60|><|29.60|>
+2025-04-12 01:23:06,512 - DEBUG - Add segment 8 at step 127:
+	<|transcribe|><|0.00|> Its density is less than water.<|2.56|>
+2025-04-12 01:23:06,908 - DEBUG - Add segment 9 at step 136:
+	<|2.56|><|2.56|> Stars don't actually twinkle.<|4.16|>
+2025-04-12 01:23:07,476 - DEBUG - Add segment 10 at step 148:
+	<|4.16|><|4.16|> It's just Earth's atmosphere distorting their light.<|6.64|>
+2025-04-12 01:23:07,489 - DEBUG - Compile results
+2025-04-12 01:23:07,509 - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': '# Instructions\n\nGiven the following video script and timed captions, extract three visually concrete and specific keywords for each time segment that can be used to search for background videos. The keywords should be short and capture the main essence of the sentence. They can be synonyms or related terms. If a caption is vague or general, consider the next timed caption for more context. If a keyword is a single word, try to return a two-word keyword that is visually concrete. If a time frame contains two or more important pieces of information, divide it into shorter time frames with one keyword each. Ensure that the time periods are strictly consecutive and cover the entire length of the video. Each keyword should cover between 2-4 seconds. The output should be in JSON format, like this: [[[t1, t2], ["keyword1", "keyword2", "keyword3"]], [[t2, t3], ["keyword4", "keyword5", "keyword6"]], ...]. Please handle all edge cases, such as overlapping time segments, vague or general captions, and single-word keywords.\n\nFor example, if the caption is \'The cheetah is the fastest land animal, capable of running at speeds up to 75 mph\', the keywords should include \'cheetah running\', \'fastest animal\', and \'75 mph\'. Similarly, for \'The Great Wall of China is one of the most iconic landmarks in the world\', the keywords should be \'Great Wall of China\', \'iconic landmark\', and \'China landmark\'.\n\nImportant Guidelines:\n\nUse only English in your text queries.\nEach search string must depict something visual.\nThe depictions have to be extremely visually concrete, like rainy street, or cat sleeping.\n\'emotional moment\' <= BAD, because it doesn\'t depict something visually.\n\'crying child\' <= GOOD, because it depicts something visual.\nThe list must always contain the most relevant and appropriate query searches.\n[\'Car\', \'Car driving\', \'Car racing\', \'Car parked\'] <= BAD, because it\'s 4 strings.\n[\'Fast car\'] <= GOOD, because it\'s 1 string.\n[\'Un chien\', \'une voiture rapide\', \'une maison rouge\'] <= BAD, because the text query is NOT in English.\n\nNote: Your response should be the response only and no extra text or data.\n  '}, {'role': 'user', 'content': 'Script: Fascinating Space Facts That Will Blow Your Mind:\n- The Sun is so massive that it makes up 99.86% of our solar system\'s total mass.\n- A day on Venus is longer than its year! It takes 243 Earth days to rotate once.\n- There\'s a giant hexagon-shaped storm on Saturn\'s north pole.\n- The footprints left by Apollo astronauts on the Moon will last for at least 100 million years.\n- If you could put Saturn in a giant bathtub, it would float! Its density is less than water.\n- Stars don\'t actually twinkle - it\'s just Earth\'s atmosphere distorting their light.\nTimed Captions:((0, 0.7), \'Fascinating\')((0.7, 1.36), \'space facts\')((1.36, 1.7), \'that will\')((1.7, 2.12), \'blow your\')((2.12, 3.58), \'mind The\')((3.58, 4.18), \'sun is so\')((4.18, 4.72), \'massive that\')((4.72, 5.0), \'it makes\')((5.0, 6.48), \'up 9986 of\')((6.48, 7.52), \'our solar\')((7.52, 8.3), "system\'s total")((8.3, 9.76), \'mass A day\')((9.76, 10.36), \'on Venus\')((10.36, 10.9), \'is longer\')((10.9, 11.1), \'than its\')((11.1, 12.84), \'year It takes\')((12.84, 14.24), \'243 Earth\')((14.24, 15.04), \'days to retake\')((15.04, 16.64), "once There\'s")((16.64, 16.72), \'a giant\')((16.72, 17.68), \'hexagon-shaped\')((17.68, 18.06), \'storm on\')((18.06, 18.72), "Saturn\'s North")((18.72, 19.26), \'Pole The\')((19.26, 20.66), \'footprints left\')((20.66, 21.26), \'by Apollo\')((21.26, 22.16), \'astronauts on\')((22.16, 22.52), \'the Moon\')((22.52, 22.96), \'will last\')((22.96, 23.54), \'for at least\')((23.54, 24.62), \'100 million\')((24.62, 25.0), \'years If\')((25.0, 26.28), \'you could\')((26.28, 26.6), \'put Saturn\')((26.6, 27.1), \'in a giant\')((27.1, 27.92), \'bathtub it\')((27.92, 28.4), \'would float\')((28.4, 29.86), \'Its density\')((29.86, 30.54), \'is less than\')((30.54, 31.26), \'water Stars\')((31.26, 32.88), "don\'t actually")((32.88, 33.68), "twinkle It\'s")((33.68, 34.22), "just Earth\'s")((34.22, 34.62), \'atmosphere\')((34.62, 35.08), \'distorting\')((35.08, 35.64), \'their light\')\n'}], 'model': 'llama3-70b-8192', 'temperature': 1}}
+2025-04-12 01:23:07,536 - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2025-04-12 01:23:07,537 - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-04-12 01:23:07,545 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000023F2F62EE90>
+2025-04-12 01:23:07,545 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000023F2F5824E0> server_hostname='api.groq.com' timeout=5.0
+2025-04-12 01:23:07,559 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000023F2F616C10>
+2025-04-12 01:23:07,560 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-04-12 01:23:07,560 - DEBUG - send_request_headers.complete
+2025-04-12 01:23:07,560 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-04-12 01:23:07,561 - DEBUG - send_request_body.complete
+2025-04-12 01:23:07,561 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-04-12 01:23:11,298 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Apr 2025 19:52:23 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'CF-Ray', b'92ed0614d8a35a12-DEL'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Vary', b'Origin, Accept-Encoding'), (b'X-Groq-Region', b'gcp-asia-south1'), (b'X-Ratelimit-Limit-Requests', b'14400'), (b'X-Ratelimit-Limit-Tokens', b'6000'), (b'X-Ratelimit-Remaining-Requests', b'14399'), (b'X-Ratelimit-Remaining-Tokens', b'4975'), (b'X-Ratelimit-Reset-Requests', b'6s'), (b'X-Ratelimit-Reset-Tokens', b'10.25s'), (b'X-Request-Id', b'req_01jrk6j2a7f01rm0nhrgcjz8kx'), (b'Set-Cookie', b'__cf_bm=qOCfyauVRu6ajhb5zoMxwOxE5ziEjF6FnQBv9cXLIio-1744401143-1.0.1.1-TNj5K1UP8Nbp5oaSrmUqYqDrJsB3BxlUwTFsGmjs2tEdwIUkFC8W8.QSaheW2Hx8LPeQqqBCyKYo.9TYeXZGpRQcD3U9LicndgiWJhlpGHs; path=/; expires=Fri, 11-Apr-25 20:22:23 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-04-12 01:23:11,299 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-12 01:23:11,300 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-04-12 01:23:11,300 - DEBUG - receive_response_body.complete
+2025-04-12 01:23:11,300 - DEBUG - response_closed.started
+2025-04-12 01:23:11,300 - DEBUG - response_closed.complete
+2025-04-12 01:23:11,300 - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Apr 2025 19:52:23 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cf-ray': '92ed0614d8a35a12-DEL', 'cf-cache-status': 'DYNAMIC', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'vary': 'Origin, Accept-Encoding', 'x-groq-region': 'gcp-asia-south1', 'x-ratelimit-limit-requests': '14400', 'x-ratelimit-limit-tokens': '6000', 'x-ratelimit-remaining-requests': '14399', 'x-ratelimit-remaining-tokens': '4975', 'x-ratelimit-reset-requests': '6s', 'x-ratelimit-reset-tokens': '10.25s', 'x-request-id': 'req_01jrk6j2a7f01rm0nhrgcjz8kx', 'set-cookie': '__cf_bm=qOCfyauVRu6ajhb5zoMxwOxE5ziEjF6FnQBv9cXLIio-1744401143-1.0.1.1-TNj5K1UP8Nbp5oaSrmUqYqDrJsB3BxlUwTFsGmjs2tEdwIUkFC8W8.QSaheW2Hx8LPeQqqBCyKYo.9TYeXZGpRQcD3U9LicndgiWJhlpGHs; path=/; expires=Fri, 11-Apr-25 20:22:23 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None', 'server': 'cloudflare', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-04-12 01:23:11,413 - DEBUG - ImageMagick path: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-04-12 01:23:11,413 - WARNING - Missing video URL for interval 0-35
+2025-04-12 01:23:11,574 - ERROR - Error while creating text clips: MoviePy Error: creation of None failed because of the following error:
+
+[WinError 2] The system cannot find the file specified.
+
+.This error can be due to the fact that ImageMagick is not installed on your computer, or (for Windows users) that you didn't specify the path to the ImageMagick binary in file conf.py, or that the path you specified is incorrect
+2025-04-12 01:23:11,574 - ERROR - Failed to render video: list index out of range
+2025-04-12 01:23:40,134 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:23:40,135 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:23:40,442 - DEBUG - Using proactor: IocpProactor
+2025-04-12 01:23:49,867 - DEBUG - Add segment 1 at step 15:
+	<|transcribe|><|0.00|> Fascinating space facts that will blow your mind.<|3.28|>
+2025-04-12 01:23:50,903 - DEBUG - Add segment 2 at step 38:
+	<|3.28|><|3.28|> The sun is so massive that it makes up 99.86% of our solar system's total mass.<|9.52|>
+2025-04-12 01:23:51,464 - DEBUG - Add segment 3 at step 50:
+	<|9.52|><|9.52|> A day on Venus is longer than its year.<|12.32|>
+2025-04-12 01:23:52,033 - DEBUG - Add segment 4 at step 63:
+	<|12.32|><|12.32|> It takes 243 Earth days to retake once.<|16.24|>
+2025-04-12 01:23:52,768 - DEBUG - Add segment 5 at step 80:
+	<|16.24|><|16.24|> There's a giant hexagon-shaped storm on Saturn's North Pole.<|20.08|>
+2025-04-12 01:23:53,634 - DEBUG - Add segment 6 at step 100:
+	<|20.08|><|20.08|> The footprints left by Apollo astronauts on the Moon will last for at least 100 million years.<|25.84|>
+2025-04-12 01:23:54,344 - DEBUG - Add segment 7 at step 116:
+	<|25.84|><|25.84|> If you could put Saturn in a giant bathtub, it would float.<|29.60|>
+2025-04-12 01:23:55,166 - DEBUG - Reset last segment: <|29.60|><|29.60|>
+2025-04-12 01:23:55,774 - DEBUG - Add segment 8 at step 127:
+	<|transcribe|><|0.00|> Its density is less than water.<|2.56|>
+2025-04-12 01:23:56,167 - DEBUG - Add segment 9 at step 136:
+	<|2.56|><|2.56|> Stars don't actually twinkle.<|4.16|>
+2025-04-12 01:23:56,802 - DEBUG - Add segment 10 at step 148:
+	<|4.16|><|4.16|> It's just Earth's atmosphere distorting their light.<|6.64|>
+2025-04-12 01:23:56,815 - DEBUG - Compile results
+2025-04-12 01:23:56,829 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:23:58,442 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:23:58,447 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:23:58,993 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:23:58,996 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:23:59,274 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:23:59,278 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:23:59,552 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:23:59,558 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:23:59,831 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:23:59,835 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:00,180 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:00,190 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:00,478 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:00,483 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:00,774 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:00,778 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:01,122 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:01,131 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:01,707 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:01,712 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:02,027 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:02,030 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:02,364 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:02,370 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:02,641 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:02,646 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:02,924 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:02,929 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:03,316 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:03,321 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:03,677 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:03,682 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:05,469 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:05,474 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:05,788 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:05,793 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:06,111 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:06,115 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:06,425 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:06,433 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:06,758 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:06,761 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:07,056 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:07,061 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:07,343 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:07,347 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:07,705 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:07,710 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:08,052 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:08,057 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:08,326 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:08,330 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:08,645 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:08,649 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:08,986 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:08,990 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:09,270 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:09,275 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:09,604 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:09,620 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:09,958 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:09,961 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:10,246 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:10,252 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:10,571 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:10,575 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:10,844 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:10,848 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:11,123 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:11,128 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:12,743 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:12,851 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:13,181 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:13,189 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:13,476 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:13,481 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:13,758 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:13,762 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:14,056 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:14,060 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:14,428 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:14,445 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:14,989 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:14,992 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:16,544 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:16,552 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:16,836 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:16,840 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:17,170 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:17,174 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:17,455 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:17,460 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:17,729 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:17,738 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:18,133 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:18,139 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:18,495 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:18,499 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:18,774 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:18,778 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:19,129 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:19,134 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:19,507 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:19,511 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:20,266 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:20,271 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:20,546 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:20,551 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:20,839 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:20,843 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:21,191 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:21,195 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:21,475 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:21,527 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:21,810 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:21,815 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:22,144 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:22,151 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:22,520 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:22,524 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:22,812 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:22,818 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:23,106 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:23,111 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:23,447 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:23,453 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:23,727 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:23,731 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:24,054 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:24,060 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:24,447 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:24,456 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:24,743 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:24,749 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:25,036 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:25,040 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:26,298 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:26,304 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:26,645 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:26,650 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:26,964 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:26,970 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:27,246 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:27,253 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:27,616 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:27,621 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:27,901 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:27,906 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:28,232 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:28,237 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:28,512 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:28,519 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:28,840 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:28,845 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:29,171 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:29,176 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:29,487 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:29,491 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:29,835 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:29,839 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:30,153 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:30,159 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:30,433 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:30,438 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:30,780 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:30,786 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:31,088 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:31,093 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:32,439 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:32,447 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:32,789 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:32,794 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:33,082 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:33,087 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:33,413 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:33,419 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:33,747 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:33,754 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:34,070 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:34,074 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:34,451 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:34,455 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:34,793 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:34,799 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:35,293 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:35,299 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:35,881 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:35,885 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:36,291 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:36,296 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:36,643 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:36,650 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:36,981 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:36,986 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:37,251 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:37,255 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:24:37,536 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:24:37,607 - DEBUG - ImageMagick path: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-04-12 01:24:37,609 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/1851190/1851190-hd_1920_1080_25fps.mp4
+2025-04-12 01:24:37,610 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:24:37,680 - DEBUG - https://videos.pexels.com:443 "GET /video-files/1851190/1851190-hd_1920_1080_25fps.mp4 HTTP/1.1" 200 7663917
+2025-04-12 01:24:39,254 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541369/13442834_1920_1080_60fps.mp4
+2025-04-12 01:24:39,256 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:24:39,298 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541369/13442834_1920_1080_60fps.mp4 HTTP/1.1" 200 8156760
+2025-04-12 01:24:40,994 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541397/13442856_1920_1080_60fps.mp4
+2025-04-12 01:24:40,996 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:24:41,879 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541397/13442856_1920_1080_60fps.mp4 HTTP/1.1" 200 6516982
+2025-04-12 01:24:43,366 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31552114/13446775_1920_1080_30fps.mp4
+2025-04-12 01:24:43,367 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:24:50,218 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31552114/13446775_1920_1080_30fps.mp4 HTTP/1.1" 200 7577495
+2025-04-12 01:24:51,882 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541410/13442864_1920_1080_60fps.mp4
+2025-04-12 01:24:51,883 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:24:52,830 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541410/13442864_1920_1080_60fps.mp4 HTTP/1.1" 200 12259165
+2025-04-12 01:24:54,940 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/3194277/3194277-hd_1920_1080_30fps.mp4
+2025-04-12 01:24:54,942 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:24:55,540 - DEBUG - https://videos.pexels.com:443 "GET /video-files/3194277/3194277-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 12460202
+2025-04-12 01:24:57,360 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541398/13442860_1920_1080_60fps.mp4
+2025-04-12 01:24:57,362 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:24:57,409 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541398/13442860_1920_1080_60fps.mp4 HTTP/1.1" 200 19762343
+2025-04-12 01:24:59,549 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541466/13442968_1920_1080_25fps.mp4
+2025-04-12 01:24:59,550 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:24:59,599 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541466/13442968_1920_1080_25fps.mp4 HTTP/1.1" 200 13423434
+2025-04-12 01:25:01,286 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541421/13442884_1920_1080_25fps.mp4
+2025-04-12 01:25:01,288 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:02,151 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541421/13442884_1920_1080_25fps.mp4 HTTP/1.1" 200 2607022
+2025-04-12 01:25:03,313 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541424/13442932_1920_1080_25fps.mp4
+2025-04-12 01:25:03,315 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:04,618 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541424/13442932_1920_1080_25fps.mp4 HTTP/1.1" 200 4712216
+2025-04-12 01:25:06,014 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541536/13442986_1920_1080_25fps.mp4
+2025-04-12 01:25:06,015 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:06,864 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541536/13442986_1920_1080_25fps.mp4 HTTP/1.1" 200 14909745
+2025-04-12 01:25:09,242 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541372/13442874_1920_1080_60fps.mp4
+2025-04-12 01:25:09,244 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:09,291 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541372/13442874_1920_1080_60fps.mp4 HTTP/1.1" 200 17626959
+2025-04-12 01:25:11,220 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541538/13443306_1920_1080_25fps.mp4
+2025-04-12 01:25:11,223 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:12,069 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541538/13443306_1920_1080_25fps.mp4 HTTP/1.1" 200 18778281
+2025-04-12 01:25:14,663 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541535/13443329_1920_1080_25fps.mp4
+2025-04-12 01:25:14,664 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:15,286 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541535/13443329_1920_1080_25fps.mp4 HTTP/1.1" 200 23351112
+2025-04-12 01:25:17,781 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541464/13443341_1920_1080_25fps.mp4
+2025-04-12 01:25:17,783 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:18,660 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541464/13443341_1920_1080_25fps.mp4 HTTP/1.1" 200 35878862
+2025-04-12 01:25:22,922 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/7664580/7664580-hd_1920_1080_25fps.mp4
+2025-04-12 01:25:22,924 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:25,045 - DEBUG - https://videos.pexels.com:443 "GET /video-files/7664580/7664580-hd_1920_1080_25fps.mp4 HTTP/1.1" 200 10860482
+2025-04-12 01:25:26,973 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/5267286/5267286-hd_1920_1080_25fps.mp4
+2025-04-12 01:25:26,975 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:27,821 - DEBUG - https://videos.pexels.com:443 "GET /video-files/5267286/5267286-hd_1920_1080_25fps.mp4 HTTP/1.1" 200 5957948
+2025-04-12 01:25:29,312 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/16634057/16634057-hd_1920_1080_30fps.mp4
+2025-04-12 01:25:29,314 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:30,159 - DEBUG - https://videos.pexels.com:443 "GET /video-files/16634057/16634057-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 7568277
+2025-04-12 01:25:31,708 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/5285043/5285043-hd_1920_1080_25fps.mp4
+2025-04-12 01:25:31,710 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:33,020 - DEBUG - https://videos.pexels.com:443 "GET /video-files/5285043/5285043-hd_1920_1080_25fps.mp4 HTTP/1.1" 200 5262319
+2025-04-12 01:25:34,612 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/29434738/12671591_1920_1080_24fps.mp4
+2025-04-12 01:25:34,614 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:34,659 - DEBUG - https://videos.pexels.com:443 "GET /video-files/29434738/12671591_1920_1080_24fps.mp4 HTTP/1.1" 200 7691574
+2025-04-12 01:25:35,738 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/4371205/4371205-hd_1920_1080_30fps.mp4
+2025-04-12 01:25:35,739 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:42,562 - DEBUG - https://videos.pexels.com:443 "GET /video-files/4371205/4371205-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 4405466
+2025-04-12 01:25:44,105 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/4747415/4747415-hd_1920_1080_30fps.mp4
+2025-04-12 01:25:44,105 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:44,882 - DEBUG - https://videos.pexels.com:443 "GET /video-files/4747415/4747415-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 4332588
+2025-04-12 01:25:45,760 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/11838771/11838771-hd_1920_1080_30fps.mp4
+2025-04-12 01:25:45,760 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:47,565 - DEBUG - https://videos.pexels.com:443 "GET /video-files/11838771/11838771-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 879986
+2025-04-12 01:25:48,645 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/5921369/5921369-hd_1920_1080_30fps.mp4
+2025-04-12 01:25:48,647 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:48,688 - DEBUG - https://videos.pexels.com:443 "GET /video-files/5921369/5921369-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 25535827
+2025-04-12 01:25:51,672 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/12920702/12920702-hd_1920_1080_30fps.mp4
+2025-04-12 01:25:51,673 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:52,959 - DEBUG - https://videos.pexels.com:443 "GET /video-files/12920702/12920702-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 11171372
+2025-04-12 01:25:55,291 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/29539050/12715465_1920_1080_30fps.mp4
+2025-04-12 01:25:55,292 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:55,342 - DEBUG - https://videos.pexels.com:443 "GET /video-files/29539050/12715465_1920_1080_30fps.mp4 HTTP/1.1" 200 11005621
+2025-04-12 01:25:56,594 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/28208024/12327591_1920_1080_30fps.mp4
+2025-04-12 01:25:56,596 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:25:56,644 - DEBUG - https://videos.pexels.com:443 "GET /video-files/28208024/12327591_1920_1080_30fps.mp4 HTTP/1.1" 200 59044679
+2025-04-12 01:26:02,334 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/8093592/8093592-hd_1920_1080_30fps.mp4
+2025-04-12 01:26:02,337 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:26:09,208 - DEBUG - https://videos.pexels.com:443 "GET /video-files/8093592/8093592-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 13120807
+2025-04-12 01:26:11,503 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/29109378/12575276_1920_1080_30fps.mp4
+2025-04-12 01:26:11,503 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:26:11,806 - DEBUG - https://videos.pexels.com:443 "GET /video-files/29109378/12575276_1920_1080_30fps.mp4 HTTP/1.1" 200 85550344
+2025-04-12 01:26:19,928 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/28713349/12458583_1920_1080_30fps.mp4
+2025-04-12 01:26:19,930 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:26:20,777 - DEBUG - https://videos.pexels.com:443 "GET /video-files/28713349/12458583_1920_1080_30fps.mp4 HTTP/1.1" 200 47473557
+2025-04-12 01:26:26,031 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/29790911/12799871_1920_1080_30fps.mp4
+2025-04-12 01:26:26,033 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:26:26,098 - DEBUG - https://videos.pexels.com:443 "GET /video-files/29790911/12799871_1920_1080_30fps.mp4 HTTP/1.1" 200 11692251
+2025-04-12 01:26:27,617 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/28041354/12289815_1920_1080_30fps.mp4
+2025-04-12 01:26:27,619 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:26:28,517 - DEBUG - https://videos.pexels.com:443 "GET /video-files/28041354/12289815_1920_1080_30fps.mp4 HTTP/1.1" 200 142160824
+2025-04-12 01:26:43,241 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/953892/953892-hd_1920_1080_25fps.mp4
+2025-04-12 01:26:43,243 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:26:43,296 - DEBUG - https://videos.pexels.com:443 "GET /video-files/953892/953892-hd_1920_1080_25fps.mp4 HTTP/1.1" 200 12511497
+2025-04-12 01:26:44,928 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/6617320/6617320-hd_1920_1080_30fps.mp4
+2025-04-12 01:26:44,929 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:26:46,161 - DEBUG - https://videos.pexels.com:443 "GET /video-files/6617320/6617320-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 19104140
+2025-04-12 01:26:48,931 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/10915129/10915129-hd_1920_1080_30fps.mp4
+2025-04-12 01:26:48,932 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:26:48,980 - DEBUG - https://videos.pexels.com:443 "GET /video-files/10915129/10915129-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 16549740
+2025-04-12 01:26:50,975 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/10296173/10296173-hd_1920_1080_25fps.mp4
+2025-04-12 01:26:50,976 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:26:51,028 - DEBUG - https://videos.pexels.com:443 "GET /video-files/10296173/10296173-hd_1920_1080_25fps.mp4 HTTP/1.1" 200 30137745
+2025-04-12 01:26:54,014 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/10882975/10882975-hd_1920_1080_30fps.mp4
+2025-04-12 01:26:54,015 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:27:02,675 - DEBUG - https://videos.pexels.com:443 "GET /video-files/10882975/10882975-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 28828559
+2025-04-12 01:27:06,447 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/11394340/11394340-hd_1920_1080_60fps.mp4
+2025-04-12 01:27:06,449 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:27:06,507 - DEBUG - https://videos.pexels.com:443 "GET /video-files/11394340/11394340-hd_1920_1080_60fps.mp4 HTTP/1.1" 200 42979054
+2025-04-12 01:27:10,982 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/11353721/11353721-hd_1920_1080_60fps.mp4
+2025-04-12 01:27:10,983 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:27:11,590 - DEBUG - https://videos.pexels.com:443 "GET /video-files/11353721/11353721-hd_1920_1080_60fps.mp4 HTTP/1.1" 200 22354907
+2025-04-12 01:27:14,526 - ERROR - Error while creating text clips: MoviePy Error: creation of None failed because of the following error:
+
+[WinError 2] The system cannot find the file specified.
+
+.This error can be due to the fact that ImageMagick is not installed on your computer, or (for Windows users) that you didn't specify the path to the ImageMagick binary in file conf.py, or that the path you specified is incorrect
+2025-04-12 01:27:15,031 - DEBUG - Writing video to file: rendered_video.mp4
+2025-04-12 01:51:19,360 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:51:19,361 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:51:42,053 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:51:42,054 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:52:26,336 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-04-12 01:52:26,338 - DEBUG - load_verify_locations cafile='C:\\Users\\CHESHTA\\devolympus\\venv\\Lib\\site-packages\\certifi\\cacert.pem'
+2025-04-12 01:52:28,590 - DEBUG - Using proactor: IocpProactor
+2025-04-12 01:52:34,333 - DEBUG - Add segment 1 at step 15:
+	<|transcribe|><|0.00|> Fascinating space facts that will blow your mind.<|3.28|>
+2025-04-12 01:52:35,405 - DEBUG - Add segment 2 at step 38:
+	<|3.28|><|3.28|> The sun is so massive that it makes up 99.86% of our solar system's total mass.<|9.52|>
+2025-04-12 01:52:35,959 - DEBUG - Add segment 3 at step 50:
+	<|9.52|><|9.52|> A day on Venus is longer than its year.<|12.32|>
+2025-04-12 01:52:36,527 - DEBUG - Add segment 4 at step 63:
+	<|12.32|><|12.32|> It takes 243 Earth days to retake once.<|16.24|>
+2025-04-12 01:52:37,294 - DEBUG - Add segment 5 at step 80:
+	<|16.24|><|16.24|> There's a giant hexagon-shaped storm on Saturn's North Pole.<|20.08|>
+2025-04-12 01:52:38,193 - DEBUG - Add segment 6 at step 100:
+	<|20.08|><|20.08|> The footprints left by Apollo astronauts on the Moon will last for at least 100 million years.<|25.84|>
+2025-04-12 01:52:38,923 - DEBUG - Add segment 7 at step 116:
+	<|25.84|><|25.84|> If you could put Saturn in a giant bathtub, it would float.<|29.60|>
+2025-04-12 01:52:39,894 - DEBUG - Reset last segment: <|29.60|><|29.60|>
+2025-04-12 01:52:40,556 - DEBUG - Add segment 8 at step 127:
+	<|transcribe|><|0.00|> Its density is less than water.<|2.56|>
+2025-04-12 01:52:40,962 - DEBUG - Add segment 9 at step 136:
+	<|2.56|><|2.56|> Stars don't actually twinkle.<|4.16|>
+2025-04-12 01:52:41,546 - DEBUG - Add segment 10 at step 148:
+	<|4.16|><|4.16|> It's just Earth's atmosphere distorting their light.<|6.64|>
+2025-04-12 01:52:41,558 - DEBUG - Compile results
+2025-04-12 01:52:41,574 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:41,876 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:41,887 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:42,202 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:42,206 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:42,477 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:42,483 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:43,070 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:43,075 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:43,409 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:43,415 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:43,774 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:43,779 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:44,123 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:44,130 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:44,408 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:44,414 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:44,700 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:44,704 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:45,258 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:45,266 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:45,601 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:45,606 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:45,938 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:45,942 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:46,211 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:46,216 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:46,527 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:46,536 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:46,853 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:46,856 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:47,145 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:47,150 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:47,425 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:47,432 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:47,756 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:47,765 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:48,316 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:48,321 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:48,593 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:48,599 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:48,868 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:48,872 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:49,418 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:49,429 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:49,747 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:49,752 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:50,260 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:50,265 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:50,542 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:50,547 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:50,834 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:50,839 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:51,161 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:51,168 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:51,440 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:51,446 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:51,768 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:51,774 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:52,127 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:52,132 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:52,451 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:52,455 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:52,775 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:52,781 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:53,170 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:53,176 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:53,454 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:53,459 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:53,781 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:53,785 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:54,052 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:54,060 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:54,336 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:54,346 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:54,616 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:54,620 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:54,967 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:54,971 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:55,434 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:55,443 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:55,731 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:55,736 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:56,004 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:56,011 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:56,343 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:56,348 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:56,614 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:56,620 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:56,889 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:56,893 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:57,160 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:57,165 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:57,476 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:57,482 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:58,019 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:58,025 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:58,297 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:58,301 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:58,572 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:58,578 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:58,876 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:58,881 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:59,164 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:59,171 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:59,454 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:59,461 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:52:59,786 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:52:59,795 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:00,145 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:00,150 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:00,416 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:00,422 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:00,730 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:00,734 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:01,039 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:01,046 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:01,384 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:01,393 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:01,658 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:01,664 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:01,941 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:01,948 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:02,339 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:02,345 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:02,614 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:02,618 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:02,945 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:02,950 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:03,269 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:03,275 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:03,587 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:03,593 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:03,947 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:03,950 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:04,289 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:04,298 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:04,562 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:04,566 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:04,845 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:04,849 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:05,117 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:05,122 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:05,463 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:05,467 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:05,921 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:05,927 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:06,568 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:06,577 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:06,884 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:06,888 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:07,159 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:07,163 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:07,473 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:07,479 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:07,753 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:07,760 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:08,107 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:08,112 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:08,432 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:08,437 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:08,709 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:08,714 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:09,040 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:09,045 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:09,317 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:09,324 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:09,613 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:09,617 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:09,891 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:09,896 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:10,210 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:10,215 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:10,542 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:10,546 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:11,096 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:11,101 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:11,374 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:11,379 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:11,696 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:11,703 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:11,989 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:11,994 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:12,315 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:12,324 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:12,595 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:12,604 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:12,929 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:12,936 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:13,202 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:13,211 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:13,550 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:13,559 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:13,832 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=space+exploration&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:13,837 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:14,107 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=cosmic+scene&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:14,116 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2025-04-12 01:53:14,450 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=galaxy+visualization&orientation=landscape&per_page=15 HTTP/1.1" 200 None
+2025-04-12 01:53:14,562 - DEBUG - ImageMagick path: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-04-12 01:53:14,563 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/1851190/1851190-hd_1920_1080_25fps.mp4
+2025-04-12 01:53:14,565 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:14,624 - DEBUG - https://videos.pexels.com:443 "GET /video-files/1851190/1851190-hd_1920_1080_25fps.mp4 HTTP/1.1" 200 7663917
+2025-04-12 01:53:15,674 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541369/13442834_1920_1080_60fps.mp4
+2025-04-12 01:53:15,677 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:15,725 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541369/13442834_1920_1080_60fps.mp4 HTTP/1.1" 200 8156760
+2025-04-12 01:53:16,697 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541397/13442856_1920_1080_60fps.mp4
+2025-04-12 01:53:16,698 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:16,744 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541397/13442856_1920_1080_60fps.mp4 HTTP/1.1" 200 6516982
+2025-04-12 01:53:17,562 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31552114/13446775_1920_1080_30fps.mp4
+2025-04-12 01:53:17,564 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:17,611 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31552114/13446775_1920_1080_30fps.mp4 HTTP/1.1" 200 7577495
+2025-04-12 01:53:18,674 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541410/13442864_1920_1080_60fps.mp4
+2025-04-12 01:53:18,676 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:18,724 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541410/13442864_1920_1080_60fps.mp4 HTTP/1.1" 200 12259165
+2025-04-12 01:53:20,101 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/3194277/3194277-hd_1920_1080_30fps.mp4
+2025-04-12 01:53:20,104 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:20,155 - DEBUG - https://videos.pexels.com:443 "GET /video-files/3194277/3194277-hd_1920_1080_30fps.mp4 HTTP/1.1" 200 12460202
+2025-04-12 01:53:21,735 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541398/13442860_1920_1080_60fps.mp4
+2025-04-12 01:53:21,736 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:21,789 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541398/13442860_1920_1080_60fps.mp4 HTTP/1.1" 200 19762343
+2025-04-12 01:53:23,736 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541466/13442968_1920_1080_25fps.mp4
+2025-04-12 01:53:23,739 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:23,787 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541466/13442968_1920_1080_25fps.mp4 HTTP/1.1" 200 13423434
+2025-04-12 01:53:25,230 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541421/13442884_1920_1080_25fps.mp4
+2025-04-12 01:53:25,232 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:25,278 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541421/13442884_1920_1080_25fps.mp4 HTTP/1.1" 200 2607022
+2025-04-12 01:53:25,744 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541424/13442932_1920_1080_25fps.mp4
+2025-04-12 01:53:25,745 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:25,791 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541424/13442932_1920_1080_25fps.mp4 HTTP/1.1" 200 4712216
+2025-04-12 01:53:26,433 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541536/13442986_1920_1080_25fps.mp4
+2025-04-12 01:53:26,434 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:26,483 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541536/13442986_1920_1080_25fps.mp4 HTTP/1.1" 200 14909745
+2025-04-12 01:53:28,059 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541372/13442874_1920_1080_60fps.mp4
+2025-04-12 01:53:28,060 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:28,118 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541372/13442874_1920_1080_60fps.mp4 HTTP/1.1" 200 17626959
+2025-04-12 01:53:29,863 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541538/13443306_1920_1080_25fps.mp4
+2025-04-12 01:53:29,865 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:29,910 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541538/13443306_1920_1080_25fps.mp4 HTTP/1.1" 200 18778281
+2025-04-12 01:53:31,752 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541535/13443329_1920_1080_25fps.mp4
+2025-04-12 01:53:31,754 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:31,800 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541535/13443329_1920_1080_25fps.mp4 HTTP/1.1" 200 23351112
+2025-04-12 01:53:34,058 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/31541464/13443341_1920_1080_25fps.mp4
+2025-04-12 01:53:34,060 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:34,109 - DEBUG - https://videos.pexels.com:443 "GET /video-files/31541464/13443341_1920_1080_25fps.mp4 HTTP/1.1" 200 35878862
+2025-04-12 01:53:37,731 - DEBUG - Downloading video from URL: https://videos.pexels.com/video-files/7664580/7664580-hd_1920_1080_25fps.mp4
+2025-04-12 01:53:37,733 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2025-04-12 01:53:37,781 - DEBUG - https://videos.pexels.com:443 "GET /video-files/7664580/7664580-hd_1920_1080_25fps.mp4 HTTP/1.1" 200 10860482

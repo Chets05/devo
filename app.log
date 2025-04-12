@@ -1,0 +1,35 @@
+2025-04-12 06:39:42,053 - INFO - Starting server on http://127.0.0.1:5000
+2025-04-12 06:39:42,053 - INFO - Available routes:
+2025-04-12 06:39:42,053 - INFO -   / - Main page
+2025-04-12 06:39:42,054 - INFO -   /generate - Video generation endpoint (POST)
+2025-04-12 06:39:42,069 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 06:39:42,069 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 06:39:42,071 - INFO -  * Restarting with stat
+2025-04-12 06:39:45,834 - INFO - Starting server on http://127.0.0.1:5000
+2025-04-12 06:39:45,834 - INFO - Available routes:
+2025-04-12 06:39:45,834 - INFO -   / - Main page
+2025-04-12 06:39:45,835 - INFO -   /generate - Video generation endpoint (POST)
+2025-04-12 06:39:45,841 - WARNING -  * Debugger is active!
+2025-04-12 06:39:45,844 - INFO -  * Debugger PIN: 651-805-624
+2025-04-12 06:41:30,444 - INFO - Serving index page
+2025-04-12 06:41:30,454 - INFO - 127.0.0.1 - - [12/Apr/2025 06:41:30] "GET / HTTP/1.1" 200 -
+2025-04-12 06:41:30,547 - INFO - 127.0.0.1 - - [12/Apr/2025 06:41:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-12 06:41:41,567 - INFO - Request received: POST
+2025-04-12 06:41:41,568 - INFO - Headers: {'Host': '127.0.0.1:5000', 'Connection': 'keep-alive', 'Content-Length': '17', 'Sec-Ch-Ua-Platform': '"Windows"', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'Sec-Ch-Ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Accept': '*/*', 'Origin': 'http://127.0.0.1:5000', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5000/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9,hi;q=0.8'}
+2025-04-12 06:41:41,568 - INFO - Content-Type: application/json
+2025-04-12 06:41:41,571 - INFO - Raw data: {"topic":"stars"}
+2025-04-12 06:41:41,572 - INFO - JSON data received: {'topic': 'stars'}
+2025-04-12 06:41:41,572 - INFO - Starting video generation for topic: stars
+2025-04-12 06:41:41,572 - INFO - Generating script...
+2025-04-12 06:41:43,423 - INFO - Script generated successfully
+2025-04-12 06:41:43,423 - INFO - Generating audio...
+2025-04-12 06:41:52,366 - INFO - Audio generated successfully: audio_tts.wav
+2025-04-12 06:41:52,366 - INFO - Generating timed captions...
+2025-04-12 06:41:58,536 - INFO - Timed captions generated successfully
+2025-04-12 06:41:58,537 - INFO - Generating video search queries...
+2025-04-12 06:41:58,537 - INFO - Searching for videos...
+2025-04-12 06:43:19,675 - INFO - Creating final video...
+2025-04-12 06:44:55,615 - INFO - Video rendering complete: rendered_video.mp4
+2025-04-12 06:44:55,616 - INFO - Sending video file response
+2025-04-12 06:44:55,617 - INFO - 127.0.0.1 - - [12/Apr/2025 06:44:55] "POST /generate HTTP/1.1" 200 -
