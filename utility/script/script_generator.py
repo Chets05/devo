@@ -1,61 +1,61 @@
+import google.generativeai as genai
 import os
-from openai import OpenAI
-import json
+from dotenv import load_dotenv
 
-if len(os.environ.get("GROQ_API_KEY")) > 30:
-    from groq import Groq
-    model = "mixtral-8x7b-32768"
-    client = Groq(
-        api_key=os.environ.get("GROQ_API_KEY"),
-        )
-else:
-    OPENAI_API_KEY = os.getenv('OPENAI_KEY')
-    model = "gpt-4o"
-    client = OpenAI(api_key=OPENAI_API_KEY)
+load_dotenv()
+
+# Configure the API key
+genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
+
+def get_fallback_script(topic):
+    """Generate a fallback script based on the topic."""
+    if "cloud" in topic.lower():
+        return """Fascinating Cloud Facts That Will Blow Your Mind:
+- Clouds can weigh over a million pounds while floating in the air.
+- The average cumulus cloud contains about 200,000 gallons of water.
+- The highest clouds, called noctilucent clouds, form at about 50 miles above Earth.
+- Some clouds can travel at speeds of over 100 miles per hour in the jet stream.
+- The most common type of cloud is the cumulus cloud, which looks like cotton balls.
+- Storm clouds can grow taller than Mount Everest."""
+    elif "space" in topic.lower():
+        return """Fascinating Space Facts That Will Blow Your Mind:
+- The Sun is so massive that it makes up 99.86% of our solar system's total mass.
+- A day on Venus is longer than its year! It takes 243 Earth days to rotate once.
+- There's a giant hexagon-shaped storm on Saturn's north pole.
+- The footprints left by Apollo astronauts on the Moon will last for at least 100 million years.
+- If you could put Saturn in a giant bathtub, it would float! Its density is less than water.
+- Stars don't actually twinkle - it's just Earth's atmosphere distorting their light."""
+    else:
+        return f"""Interesting Facts About {topic}:
+- Scientists are constantly making new discoveries about {topic}.
+- There are many fascinating aspects of {topic} that people don't know about.
+- Research continues to reveal new insights about {topic}.
+- The history of {topic} goes back many years.
+- Modern technology has helped us better understand {topic}.
+- There's still much to learn about {topic}."""
 
 def generate_script(topic):
-    prompt = (
-        """You are a seasoned content writer for a YouTube Shorts channel, specializing in facts videos. 
-        Your facts shorts are concise, each lasting less than 50 seconds (approximately 140 words). 
-        They are incredibly engaging and original. When a user requests a specific type of facts short, you will create it.
-
-        For instance, if the user asks for:
-        Weird facts
-        You would produce content like this:
-
-        Weird facts you don't know:
-        - Bananas are berries, but strawberries aren't.
-        - A single cloud can weigh over a million pounds.
-        - There's a species of jellyfish that is biologically immortal.
-        - Honey never spoils; archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still edible.
-        - The shortest war in history was between Britain and Zanzibar on August 27, 1896. Zanzibar surrendered after 38 minutes.
-        - Octopuses have three hearts and blue blood.
-
-        You are now tasked with creating the best short script based on the user's requested type of 'facts'.
-
-        Keep it brief, highly interesting, and unique.
-
-        Stictly output the script in a JSON format like below, and only provide a parsable JSON object with the key 'script'.
-
-        # Output
-        {"script": "Here is the script ..."}
-        """
-    )
-
-    response = client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": prompt},
-                {"role": "user", "content": topic}
-            ]
-        )
-    content = response.choices[0].message.content
     try:
-        script = json.loads(content)["script"]
+        # Initialize the model with the correct name
+        model = genai.GenerativeModel('gemini-1.0-pro')
+        
+        # Create the prompt
+        prompt = f"""Create a short, engaging script about {topic}. The script should:
+        1. Be 30-45 seconds long when spoken
+        2. Include 4-6 interesting facts
+        3. Be conversational and engaging
+        4. Be suitable for a video with background visuals
+        
+        Format the script as a series of bullet points, each containing one fact."""
+        
+        # Generate content
+        response = model.generate_content(prompt)
+        
+        if response and response.text:
+            return response.text
+        else:
+            return get_fallback_script(topic)
+            
     except Exception as e:
-        json_start_index = content.find('{')
-        json_end_index = content.rfind('}')
-        print(content)
-        content = content[json_start_index:json_end_index+1]
-        script = json.loads(content)["script"]
-    return script
+        print(f"Error generating script: {str(e)}")
+        return get_fallback_script(topic)

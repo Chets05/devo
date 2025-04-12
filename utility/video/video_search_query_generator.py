@@ -4,6 +4,11 @@ import json
 import re
 from datetime import datetime
 from utility.utils import log_response,LOG_TYPE_GPT
+import requests
+from dotenv import load_dotenv
+import time
+
+load_dotenv()
 
 if len(os.environ.get("GROQ_API_KEY")) > 30:
     from groq import Groq
@@ -41,32 +46,104 @@ Note: Your response should be the response only and no extra text or data.
 
 def fix_json(json_str):
     # Replace typographical apostrophes with straight quotes
-    json_str = json_str.replace("’", "'")
+    json_str = json_str.replace("'", "'")
     # Replace any incorrect quotes (e.g., mixed single and double quotes)
-    json_str = json_str.replace("“", "\"").replace("”", "\"").replace("‘", "\"").replace("’", "\"")
+    json_str = json_str.replace(""", "\"").replace(""", "\"").replace("'", "\"").replace("'", "\"")
     # Add escaping for quotes within the strings
     json_str = json_str.replace('"you didn"t"', '"you didn\'t"')
     return json_str
 
-def getVideoSearchQueriesTimed(script,captions_timed):
-    end = captions_timed[-1][0][1]
-    try:
+PEXELS_API_KEY = os.getenv('PEXELS_KEY')
+RATE_LIMIT_DELAY = 2  # Increased delay to 2 seconds between requests
+MAX_RETRIES = 3  # Maximum number of retries for failed requests
+
+def search_pexels_videos(query, per_page=1):
+    """Search for videos on Pexels with rate limiting and retries."""
+    headers = {
+        'Authorization': PEXELS_API_KEY,
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+    
+    # Clean up the query
+    query = ' '.join(word for word in query.split() if len(word) > 2)
+    if not query:
+        query = "nature"  # fallback query
+    
+    url = f'https://api.pexels.com/videos/search?query={query}&per_page={per_page}'
+    
+    for attempt in range(MAX_RETRIES):
+        try:
+            # Add delay for rate limiting
+            time.sleep(RATE_LIMIT_DELAY)
+            
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()
+            data = response.json()
+            
+            if data.get('videos'):
+                # Get the video with the best quality
+                video = data['videos'][0]
+                video_files = sorted(
+                    video['video_files'],
+                    key=lambda x: (x.get('width', 0) * x.get('height', 0)),
+                    reverse=True
+                )
+                
+                # Try to find a suitable quality video (HD or lower)
+                for video_file in video_files:
+                    if video_file.get('width', 0) <= 1920:  # Max Full HD
+                        return video_file['link']
+                
+                # If no suitable quality found, use the lowest quality
+                return video_files[-1]['link']
+                    
+            return None
+            
+        except requests.exceptions.RequestException as e:
+            if attempt < MAX_RETRIES - 1:
+                print(f"Attempt {attempt + 1} failed: {str(e)}. Retrying...")
+                time.sleep(RATE_LIMIT_DELAY * 2)  # Double the delay on retry
+            else:
+                print(f"All attempts failed: {str(e)}")
+                return None
+        except Exception as e:
+            print(f"Error searching for videos: {str(e)}")
+            return None
+
+def getVideoSearchQueriesTimed(script, captions_timed):
+    """Generate search queries for each caption segment."""
+    search_queries = []
+    
+    # Default queries for different types of content
+    cloud_queries = [
+        "timelapse clouds",
+        "storm clouds forming",
+        "beautiful cloudscape",
+        "clouds in sky",
+        "weather clouds",
+        "cumulus clouds"
+    ]
+    
+    for (start_time, end_time), caption in captions_timed:
+        # Create search queries based on the caption
+        queries = []
         
-        out = [[[0,0],""]]
-        while out[-1][0][1] != end:
-            content = call_OpenAI(script,captions_timed).replace("'",'"')
-            try:
-                out = json.loads(content)
-            except Exception as e:
-                print("content: \n", content, "\n\n")
-                print(e)
-                content = fix_json(content.replace("```json", "").replace("```", ""))
-                out = json.loads(content)
-        return out
-    except Exception as e:
-        print("error in response",e)
-   
-    return None
+        # Add specific queries based on the caption content
+        if "cloud" in script.lower():
+            queries.extend(cloud_queries[:2])  # Add some default cloud queries
+            
+        # Add the caption as a query
+        clean_caption = ' '.join(word for word in caption.split() if len(word) > 2 and not word.lower() in ['the', 'and', 'but', 'for', 'with'])
+        if clean_caption:
+            queries.append(clean_caption)
+            
+        # If we don't have any valid queries, use defaults
+        if not queries:
+            queries = cloud_queries[:2]
+            
+        search_queries.append(((start_time, end_time), queries))
+    
+    return search_queries
 
 def call_OpenAI(script,captions_timed):
     user_content = """Script: {}
@@ -90,29 +167,20 @@ Timed Captions:{}
     return text
 
 def merge_empty_intervals(segments):
-    merged = []
-    i = 0
-    while i < len(segments):
-        interval, url = segments[i]
-        if url is None:
-            # Find consecutive None intervals
-            j = i + 1
-            while j < len(segments) and segments[j][1] is None:
-                j += 1
-            
-            # Merge consecutive None intervals with the previous valid URL
-            if i > 0:
-                prev_interval, prev_url = merged[-1]
-                if prev_url is not None and prev_interval[1] == interval[0]:
-                    merged[-1] = [[prev_interval[0], segments[j-1][0][1]], prev_url]
-                else:
-                    merged.append([interval, prev_url])
-            else:
-                merged.append([interval, None])
-            
-            i = j
-        else:
-            merged.append([interval, url])
-            i += 1
+    """Merge consecutive segments with no video URL."""
+    if not segments:
+        return [((0, 10), None)]  # Default segment if no segments provided
     
+    merged = []
+    current_segment = list(segments[0])  # Convert to list for mutability
+    
+    for segment in segments[1:]:
+        if current_segment[1] is None and segment[1] is None:
+            # Merge consecutive None segments
+            current_segment[0] = (current_segment[0][0], segment[0][1])
+        else:
+            merged.append(tuple(current_segment))  # Convert back to tuple
+            current_segment = list(segment)
+    
+    merged.append(tuple(current_segment))  # Add the last segment
     return merged

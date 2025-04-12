@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .loading {
+            display: none;
+        }
+        .loading.active {
+            display: block;
+        }
+        .video-container {
+            display: none;
+        }
+        .video-container.active {
+            display: block;
+        }
+        .error-message {
+            display: none;
+            color: #dc2626;
+            background-color: #fee2e2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+        .error-message.active {
+            display: block;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background-color: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #3b82f6;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto">
+            <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">AI Video Generator</h1>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <form id="videoForm" class="space-y-4">
+                    <div>
+                        <label for="topic" class="block text-sm font-medium text-gray-700 mb-2">Enter your topic</label>
+                        <input type="text" id="topic" name="topic" 
+                               class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                               placeholder="e.g., interesting facts about space" required>
+                    </div>
+                    <button type="submit" id="generateButton"
+                            class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Generate Video
+                    </button>
+                </form>
+                <div id="errorMessage" class="error-message"></div>
+                <div class="progress-bar">
+                    <div id="progressBarFill" class="progress-bar-fill"></div>
+                </div>
+            </div>
+
+            <div id="loading" class="loading bg-white rounded-lg shadow-md p-6 text-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                <p class="text-gray-700">Generating your video... This may take a few minutes.</p>
+                <p id="progressText" class="text-sm text-gray-500 mt-2"></p>
+            </div>
+
+            <div id="videoContainer" class="video-container bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4 text-gray-800">Your Generated Video</h2>
+                <video id="generatedVideo" class="w-full rounded-lg" controls>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, adding event listeners');
+            
+            const form = document.getElementById('videoForm');
+            const topicInput = document.getElementById('topic');
+            const generateButton = document.getElementById('generateButton');
+            const loading = document.getElementById('loading');
+            const videoContainer = document.getElementById('videoContainer');
+            const video = document.getElementById('generatedVideo');
+            const errorMessage = document.getElementById('errorMessage');
+            const progressBarFill = document.getElementById('progressBarFill');
+            const progressText = document.getElementById('progressText');
+
+            let progress = 0;
+            const progressSteps = [
+                { step: 0, text: "Generating script..." },
+                { step: 20, text: "Creating audio..." },
+                { step: 40, text: "Generating captions..." },
+                { step: 60, text: "Searching for videos..." },
+                { step: 80, text: "Creating final video..." },
+                { step: 100, text: "Video ready!" }
+            ];
+
+            function updateProgress(step) {
+                progress = step;
+                progressBarFill.style.width = `${step}%`;
+                const currentStep = progressSteps.find(s => s.step <= step && s.step + 20 > step);
+                if (currentStep) {
+                    progressText.textContent = currentStep.text;
+                }
+            }
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const topic = topicInput.value;
+                console.log('Form submitted with topic:', topic);
+                
+                // Reset states
+                loading.classList.remove('active');
+                videoContainer.classList.remove('active');
+                errorMessage.classList.remove('active');
+                errorMessage.textContent = '';
+                progressBarFill.style.width = '0%';
+                progressText.textContent = '';
+                
+                // Disable form
+                topicInput.disabled = true;
+                generateButton.disabled = true;
+                generateButton.classList.add('opacity-50');
+                
+                // Show loading state
+                loading.classList.add('active');
+                updateProgress(0);
+                
+                try {
+                    console.log('Sending request to /generate endpoint...');
+                    
+                    const requestData = { topic: topic };
+                    console.log('Request payload:', requestData);
+                    
+                    const response = await fetch('/generate', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(requestData)
+                    });
+                    
+                    console.log('Response received. Status:', response.status);
+                    
+                    if (response.ok) {
+                        console.log('Response OK, processing...');
+                        
+                        // Check the content type
+                        const contentType = response.headers.get('Content-Type');
+                        console.log('Content-Type:', contentType);
+                        
+                        if (contentType && contentType.includes('video/mp4')) {
+                            // Handle video response
+                            console.log('Received video response');
+                            const blob = await response.blob();
+                            const videoUrl = URL.createObjectURL(blob);
+                            video.src = videoUrl;
+                            videoContainer.classList.add('active');
+                            updateProgress(100);
+                        } else if (contentType && contentType.includes('application/json')) {
+                            // Handle JSON response
+                            console.log('Received JSON response');
+                            const data = await response.json();
+                            console.log('Response data:', data);
+                            
+                            if (data.status === 'success') {
+                                errorMessage.textContent = data.message;
+                                errorMessage.style.color = '#059669';
+                                errorMessage.style.backgroundColor = '#d1fae5';
+                                errorMessage.classList.add('active');
+                            } else {
+                                errorMessage.textContent = data.error || 'Unknown error occurred';
+                                errorMessage.classList.add('active');
+                            }
+                        } else {
+                            // Handle other response types
+                            console.log('Received other response type');
+                            const text = await response.text();
+                            console.log('Response text:', text.substring(0, 100) + '...');
+                            errorMessage.textContent = 'Received unexpected response from server';
+                            errorMessage.classList.add('active');
+                        }
+                    } else {
+                        console.log('Response not OK');
+                        
+                        try {
+                            const errorData = await response.json();
+                            console.error('Error data:', errorData);
+                            errorMessage.textContent = errorData.error || `Server error: ${response.status} ${response.statusText}`;
+                        } catch (jsonError) {
+                            console.error('Error parsing error response:', jsonError);
+                            errorMessage.textContent = `Server error: ${response.status} ${response.statusText}`;
+                        }
+                        
+                        errorMessage.classList.add('active');
+                    }
+                } catch (error) {
+                    console.error('Network error:', error);
+                    errorMessage.textContent = `Network error: ${error.message}. Please check if the server is running and try again.`;
+                    errorMessage.classList.add('active');
+                } finally {
+                    loading.classList.remove('active');
+                    // Re-enable form
+                    topicInput.disabled = false;
+                    generateButton.disabled = false;
+                    generateButton.classList.remove('opacity-50');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

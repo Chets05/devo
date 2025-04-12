@@ -1,3 +1,16 @@
+import sys
+import os
+
+# Debugging: Print sys.path to check module search paths
+print("Python module search paths:")
+for path in sys.path:
+    print(path)
+
+# Ensure the module's path is included
+module_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
+if module_path not in sys.path:
+    sys.path.append(module_path)
+
 import whisper_timestamped as whisper
 from whisper_timestamped import load_model, transcribe_timestamped
 import re
@@ -58,8 +71,8 @@ def getCaptionsWithTime(whisper_analysis, maxCaptionSize=15, considerPunctuation
         sentences = re.split(r'(?<=[.!?]) +', text)
         words = [word for sentence in sentences for word in splitWordsBySize(sentence.split(), maxCaptionSize)]
     else:
-        words = text.split()
-        words = [cleanWord(word) for word in splitWordsBySize(words, maxCaptionSize)]
+        words = [cleanWord(word) for word in text.split()]
+        words = splitWordsBySize(words, maxCaptionSize)
     
     for word in words:
         position += len(word) + 1

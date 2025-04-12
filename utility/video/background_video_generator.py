@@ -1,6 +1,8 @@
 import os 
 import requests
 from utility.utils import log_response,LOG_TYPE_PEXEL
+from dotenv import load_dotenv
+load_dotenv()
 
 PEXELS_API_KEY = os.environ.get('PEXELS_KEY')
 
